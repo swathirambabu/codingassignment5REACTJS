@@ -4,7 +4,7 @@ import Loader from 'react-loader-spinner'
 import {BsStarFill, BsFillBriefcaseFill} from 'react-icons/bs'
 import {MdLocationOn} from 'react-icons/md'
 import {BiLinkExternal} from 'react-icons/bi'
-import SimilarJobItem from '../SimilarJobItem'
+import SimilarJobs from '../SimilarJobs'
 import SkillCard from '../SkillCard'
 import Header from '../Header'
 
@@ -212,7 +212,7 @@ class JobItemDetails extends Component {
         <h1 className="similar-jobs-heading">Similar Jobs</h1>
         <ul className="similar-jobs-list">
           {similarJobsData.map(each => (
-            <SimilarJobItem jobDetails={each} key={each.id} />
+            <SimilarJobs jobDetails={each} key={each.id} />
           ))}
         </ul>
       </div>

@@ -1,13 +1,13 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
-import {MdLocation} from 'react-icons/md'
+import {MdLocatiOn} from 'react-icons/md'
 import {AiFillStar} from 'react-icons/ai'
 import {BiLinkExternal} from 'react-icons/bi'
 import Loader from 'react-loader-spinner'
 import Header from '../Header'
 import SimilarJobs from '../SimilarJobs'
 import './index.css'
-import { matchPrecache } from 'workbox-precaching'
+
 
 const apiStatusConstants = {
   initial: 'INITIAL',
@@ -61,7 +61,8 @@ class AboutJobItem extends Component{
                     imageUrl:eachSkill.image_url,
                     name:eachSkill.name,
                 }))
-            }))
+            }),
+            )
 
 
             const updatedSimilarJobDetails=fetchedJobData.Similar_jobs.map(each=>({
@@ -74,7 +75,8 @@ class AboutJobItem extends Component{
                 location: each.location,
                 rating: each.rating,
                 title: each.title,
-            }))
+            }),
+            )
             this.setState({
                 jobDataDetails:updatedJobDetailsData,
                 similarJobsData:updatedSimilarJobDetails,
@@ -90,7 +92,8 @@ class AboutJobItem extends Component{
         const {jobDetails,similarJobsData}=thi.state
 
         if(jobDataDetails.length>=1)}
-        const {companyLogoUrl,companyWebsiteUrl,id,lifeAtCompany,location,packagePerAnnum,rating,skills,title}=jobDataDetails[0]
+        const {companyLogoUrl,companyWebsiteUrl,id,lifeAtCompany,employmentType,jobDescription,
+            location,packagePerAnnum,rating,skills,title}=jobDataDetails[0]
 
         return(
             <>
@@ -99,13 +102,13 @@ class AboutJobItem extends Component{
           <div className="img-title-container">
             <img
               src={companyLogoUrl}
-              alt="company logo"
+              alt="job details company logo"
               className="company-logo"
             />
             <div className="title-rating-container">
               <h1 className="title-heading">{title}</h1>
               <div className="star-rating-container">
-                <BsStarFill className="star-icon" />
+                <AiFIllStar className="star-icon" />
                 <p className="rating-text">{rating}</p>
               </div>
             </div>
@@ -124,7 +127,7 @@ class AboutJobItem extends Component{
             </div>
             <div className="package-container">
 
-            <p className="package-heading">{packagePerAnnum}</p>
+            <p className="package">{packagePerAnnum}</p>
             </div>
           </div>
         </div>
@@ -142,6 +145,7 @@ class AboutJobItem extends Component{
            {skills.map(each=>(
                <li className="li-job-details-container" key={each.name}>
                    <img className="skill-img" src={each.imageUrl} alt={each.name}/>
+                   <p>{each.name}</p>
                </li>
            ))}
        </ul>
@@ -191,7 +195,7 @@ renderJobFailureView=()=>(
         <button
           type="button"
         
-          className="failure-job-details-button"
+          className="failure-job-details-btn"
           onClick={this.onRetryJobDetailsAgain}
         >
           retry
