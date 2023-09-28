@@ -92,7 +92,7 @@ class AllJobs extends Component{
 
         const response=await fetch(apiUrl,options)
         if(response.ok===true){
-            const data=await response.json()
+            const data=[await response.json()]
             const updatedDataProfile=data.map(each=>({
                 name:each.profile_details.name,
                 profileImageUrl:each.profile_details.profile_image_url,
@@ -159,7 +159,7 @@ class AllJobs extends Component{
         const inputNotInList=checkboxInputs.filter(each=>each===event.target.id)
 
         if(inputNotInList.length===0){
-            this.setState(prevState=>({checkboxInputs:[...prevState.checkboxInput,event.target.id]}),this.onGetJobDetails)
+            this.setState(prevState=>({checkboxInputs:[...prevState.checkboxInputs,event.target.id]}),this.onGetJobDetails)
         }else{
             const filteredData=checkboxInputs.filter(each=>each!==event.target.id)
 
@@ -191,7 +191,8 @@ class AllJobs extends Component{
 
     onGetProfileFailureView=()=>(
         <div className="failure-button-container">
-            <button className="failure-button" type="button" onClick={this.onRetryProfile}>retry</button>
+            <button className="failure-button" type="button"
+             onClick={this.onRetryProfile}>retry</button>
         </div>
     )
     
@@ -247,7 +248,7 @@ class AllJobs extends Component{
       </div>
     )
 
-    onGetJobView=()=>{
+    onGetJobsView=()=>{
         const {jobsData}=this.state
         const noJobs=jobsData.length===0
         return noJobs?(
@@ -271,7 +272,7 @@ class AllJobs extends Component{
 
     switch (apiJobStatus) {
       case apiJobsStatusConstants.success:
-        return this.onGetJobView()
+        return this.onGetJobsView()
       case apiJobsStatusConstants.failure:
         return this.onGetJobsFailureView()
       case apiJobsStatusConstants.inProgress:
@@ -299,7 +300,7 @@ onGetRadioButtonView=()=>(
     <ul className="radio-button-container">
           {salaryRangesList.map(each=>(
               <li className="li-container" key={each.salaryRangeId}>
-                  <input type="radio" id={each.salaryRangesId}
+                  <input className="radio" id={each.salaryRangeId}
                   type="radio" name="option" onChange={this.onGetRadioOption}/>
                   <label className="label" htmlFor={each.salaryRangeId}>
                       {each.label}
@@ -344,16 +345,16 @@ onGetRadioButtonView=()=>(
                 <div>                  
                       <input className="search-input" type="search" value={searchInput}
                       placeholder="Search" onChange={this.onGetSearchInput} onKeyDown={this.onEnterSearchInput}/>
-                      <button data-testid="searchButton" type="button" className="search-button" onClick={this.onSubmitSearchInput}>
+                      <button data-testid="searchButton" type="button" 
+                      className="search-button"
+                       onClick={this.onSubmitSearchInput}>
                      
                       <AiOutlineSearch className="search-icon"/>
                       </button>
                     </div>
                        {this.onRenderJobsStatus()}
                   </div>
-              </div>
-
-           
+              </div>           
         </>         
       )
   }

@@ -2,7 +2,7 @@ import {BsSearch} from 'react-icons/bs'
 import ProfileDetails from '../ProfileDetails'
 import './index.css'
 
-const FilterGroup = props => {
+const FiltersGroup = props => {
   const onChangeSearchInput = event => {
     const {changeSearchInput} = props
     changeSearchInput(event)
@@ -30,7 +30,7 @@ const FilterGroup = props => {
         <button
           type="button"
           id="searchButton"
-          className="search-button"
+          className="search-button-container"
           onClick={getJobs}
         >
           <BsSearch className="search-icon" />
@@ -117,4 +117,4 @@ const FilterGroup = props => {
     </div>
   )
 }
-export default FilterGroup
+export default FiltersGroup

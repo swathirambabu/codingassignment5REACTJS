@@ -83,7 +83,7 @@
   margin-top: 0px;
 }
 @media screen and (min-width: 768px) {
-  .jobs-faiure-description {
+  .jobs-failure-description {
     font-size: 16px;
   }
 }

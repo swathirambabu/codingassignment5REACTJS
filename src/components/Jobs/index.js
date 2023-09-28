@@ -63,10 +63,10 @@ class Jobs extends Component {
   }
 
   componentDidMount() {
-    this.getJob()
+    this.getJobs()
   }
 
-  getJob = async () => {
+  getJobs = async () => {
     this.setState({apiStatus: apiStatusConstants.inProgress})
     const {employeeType, minimumSalary, searchInput} = this.state
 
@@ -135,18 +135,18 @@ class Jobs extends Component {
       <img
         src="https://assets.ccbp.in/frontend/react-js/failure-img.png"
         alt="failure view"
-        className="job-failure-img"
+        className="jobs-failure-img"
       />
-      <h1 className="job-failure-heading-text">Oops! Something Went Wrong</h1>
-      <p className="job-failure-description">
+      <h1 className="jobs-failure-heading-text">Oops! Something Went Wrong</h1>
+      <p className="jobs-failure-description">
         We cannot seem to find the page you are looking for
       </p>
 
       <button
         type="button"
         id="button"
-        className="job-failure-button"
-        onClick={this.getJob}
+        className="jobs-failure-button"
+        onClick={this.getJobs}
       >
         Retry
       </button>
@@ -191,7 +191,7 @@ class Jobs extends Component {
   changeEmployeeList = type => {
     this.setState(
       prev => ({employeeType: [...prev.employeeType, type]}),
-      this.getJob,
+      this.getJobs,
     )
   }
 
@@ -223,7 +223,7 @@ class Jobs extends Component {
                 />
                 <button
                   type="button"
-                  data-testid="SearchButton"
+                  data-testid="searchButton"
                   className="search-button-container-desktop"
                   onClick={this.getJobs}
                 >

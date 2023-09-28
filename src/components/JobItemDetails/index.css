@@ -50,7 +50,7 @@
 }
 @media screen and (min-width: 768px) {
   .job-item-failure-heading-text {
-    font-size: 30px;
+    font-size: 38px;
   }
 }
 .job-item-failure-description {
@@ -222,7 +222,7 @@
   line-height: 1.8;
   font-family: roboto;
 }
-.similar-job-heading {
+.similar-jobs-heading {
   color: white;
   font-family: roboto;
   font-size: 28px;
@@ -311,7 +311,7 @@
 .skills-container {
   display: flex;
 }
-.skills-image {
+.skill-image {
   width: 30px;
   margin-right: 20px;
 }

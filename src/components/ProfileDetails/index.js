@@ -58,7 +58,12 @@ class ProfileDetails extends Component {
 
   renderFailureView = () => (
     <div className="profile-error-view-container">
-      <button type="button" id="button" className="profile-failure-button">
+      <button
+        type="button"
+        id="button"
+        className="profile-failure-button"
+        onClick={this.getProfile}
+      >
         Retry
       </button>
     </div>

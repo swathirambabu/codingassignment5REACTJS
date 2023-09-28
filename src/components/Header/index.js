@@ -27,12 +27,12 @@ const Header = props => {
           <ul className="navbar-mobile-icons-container">
             <li>
               <Link to="/">
-                <AiFillHome className="mobile-link" />
+                <AiFillHome className="nav-item-mobile-link" />
               </Link>
             </li>
             <li>
               <Link to="/jobs">
-                <BsFillBriefcaseFill className="mobile-link" />
+                <BsFillBriefcaseFill className="nav-item-mobile-link" />
               </Link>
             </li>
             <li>
@@ -56,6 +56,11 @@ const Header = props => {
             />
           </Link>
           <ul className="nav-menu">
+            <li className="nav-menu-item">
+              <Link to="/" className="nav-link">
+                Home
+              </Link>
+            </li>
             <li className="nav-menu-item">
               <Link to="/jobs" className="nav-link">
                 Jobs

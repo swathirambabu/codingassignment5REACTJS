@@ -68,10 +68,16 @@
   font-weight: 400;
   font-size: 16px;
 }
+.nav-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+}
 .logout-desktop-btn {
   font-family: roboto;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
   color: white;
   background-color: #4f46e5;
   border: none;

@@ -38,7 +38,7 @@ class Login extends Component {
     if (response.ok === true) {
       this.onSubmitSuccess(data.jwt_token)
     } else {
-      this.onSubmitFailure(data.jwt_token)
+      this.onSubmitFailure(data.error_msg)
     }
   }
 

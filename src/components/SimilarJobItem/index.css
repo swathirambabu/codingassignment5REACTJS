@@ -7,6 +7,12 @@
   margin-bottom: 25px;
   margin: 10px;
 }
+@media screen and (min-width: 768px) {
+  .similar-job-item {
+    width: 350px;
+    margin-right: 20px;
+  }
+}
 .logo-title-location-container {
   display: flex;
   flex-direction: column;
@@ -48,12 +54,7 @@
   font-weight: bold;
   font-family: roboto;
 }
-.location-package-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
+
 .location-employee-container {
   display: flex;
   flex-direction: row;
@@ -79,12 +80,7 @@
   font-size: 14px;
   font-family: roboto;
 }
-.package-heading {
-  color: white;
-  font-size: 18px;
-  font-family: roboto;
-  font-weight: 500;
-}
+
 .employee-type-container {
   display: flex;
   align-items: center;
@@ -95,10 +91,7 @@
   font-size: 14px;
   font-family: roboto;
 }
-.line {
-  color: #7e858e;
-  width: 100%;
-}
+
 .description-heading {
   color: white;
   font-size: 20px;
