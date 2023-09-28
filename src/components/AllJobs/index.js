@@ -117,7 +117,7 @@ class AllJobs extends Component{
         const jwtToken=Cookies.get('jwt_token')
         const {checkboxInputs,radioInput,searchInput}=this.state
 
-        const apiUrl=`https://apis.ccbp.in/jobs?employment_type=${checkboxInputs}&minimum_package=${radioInput}&search=${searchInput}`
+        const jobApiUrl=`https://apis.ccbp.in/jobs?employment_type=${checkboxInputs}&minimum_package=${radioInput}&search=${searchInput}`
         
         const options={
             headers:{
@@ -126,9 +126,9 @@ class AllJobs extends Component{
             method:'GET',
         }
 
-        const responseJobs=await fetch(apiUrl,options)
-        if(response.ok===true){
-            const data=await response.json()
+        const responseJobs=await fetch(jobApiUrl,options)
+        if(responseJobs.ok===true){
+            const data=await responseJobs.json()
             const updatedDataJobs=data.jobs.map(each=>({
                 companyLogoUrl: each.company_logo_url,  
                 employmentType: each.employment_type,
@@ -159,7 +159,7 @@ class AllJobs extends Component{
         const inputNotInList=checkboxInputs.filter(each=>each===event.target.id)
 
         if(inputNotInList.length===0){
-            this.setState(prevState=>({checkboxInputs:[...prevState.checkboxInputs,event.target.id]}),this.onGetJobDetails)
+            this.setState(prevState=>({checkboxInputs:[...prevState.checkboxInputs,event.target.id],}),this.onGetJobDetails)
         }else{
             const filteredData=checkboxInputs.filter(each=>each!==event.target.id)
 
@@ -253,14 +253,16 @@ class AllJobs extends Component{
         const noJobs=jobsData.length===0
         return noJobs?(
             <div className="no-jobs-container">
-                    <img src="https://assets.ccbp.in/frontend/react-js/no-jobs-img.png " alt="no jobs" />
+                    <img className="no-jobs-img"
+                    src="https://assets.ccbp.in/frontend/react-js/no-jobs-img.png " 
+                    alt="no jobs" />
                     <h1 >No Jobs Found</h1>
                     <p>We could not find any jobs. Try other filters.</p>
                 </div>
         ):(
             <ul className="ul-job-items-container">
                 {jobsData.map(each=>(
-                            <JobItem jobData={each} key={each.id}/>
+                     <JobItem jobData={each} key={each.id}/>
                     ))}
             </ul>
         )
@@ -283,10 +285,10 @@ class AllJobs extends Component{
   }
 
   onGetCheckBoxesView=()=>(
-      <ul className="checkboxes-container">
+      <ul className="check-boxes-container">
           {employmentTypesList.map(each=>(
               <li className="li-container" key={each.employmentTypeId}>
-                  <input type="input" id={each.employmentTypeId}
+                  <input className="input" id={each.employmentTypeId}
                   type="checkbox" onChange={this.onGetInputOption}/>
                   <label className="label" htmlFor={each.employmentTypeId}>
                       {each.label}

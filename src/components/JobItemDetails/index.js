@@ -204,7 +204,7 @@ class JobItemDetails extends Component {
             <p className="life-at-company-description">{description}</p>
             <img
               src={imageUrl}
-              alt="lift at company"
+              alt="life at company"
               className="life-at-company-image"
             />
           </div>
